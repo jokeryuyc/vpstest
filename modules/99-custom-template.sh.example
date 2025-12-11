@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# 自定义模块模板：复制后改名为 XX-your-feature.sh，并调整 MENU_ID/菜单文字/函数
+
+# 模块元数据：确保 MENU_ID 唯一且为整数，MENU_LABEL 为菜单显示文案，MENU_FUNC 为主入口函数名
+MENU_ID=50
+MENU_LABEL="示例模板（请自定义）"
+MENU_FUNC="module_custom_example_main"
+
+# 模块主入口
+module_custom_example_main() {
+  local choice
+  while true; do
+    ui_print_header "自定义模板示例"
+    echo "1) 执行示例操作"
+    echo "0) 返回主菜单"
+    echo "------------------------------------"
+    read -r -p "请选择: " choice
+    case "$choice" in
+      1) custom_example_action ;;
+      0) break ;;
+      *) ui_print_error "无效选项，请重试。" ;;
+    esac
+  done
+}
+
+# 示例操作：根据需要替换为真实逻辑
+custom_example_action() {
+  ui_print_info "在这里编写你的功能逻辑，比如调用其他脚本或展示信息。"
+  ui_press_enter_to_continue
+}
